@@ -12,9 +12,9 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
-import { HomePage } from './pages/HomePage/Loadable';
-import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { useTranslation } from 'react-i18next';
+import AppLayout from 'app/containers/AppLayout';
+import LoginCallback from 'app/containers/Authentication/LoginCallback/Loadable';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -29,8 +29,8 @@ export function App() {
       </Helmet>
 
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
+        <Route component={AppLayout} />
+        <Route path="/login-callback" component={LoginCallback} />
       </Switch>
       <GlobalStyle />
     </BrowserRouter>

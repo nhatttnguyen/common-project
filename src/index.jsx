@@ -21,21 +21,29 @@ import { App } from 'app';
 import { HelmetProvider } from 'react-helmet-async';
 
 import { configureAppStore } from 'store/configureStore';
+import { MsalProvider } from '@azure/msal-react';
+import { PublicClientApplication } from '@azure/msal-browser';
 
 import reportWebVitals from 'reportWebVitals';
+
+import 'styles/icon-moon.css';
+import config from 'config/appConfig';
 
 // Initialize languages
 import './locales/i18n';
 
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root');
+const msalInstance = new PublicClientApplication(config.AzureAdB2C.msalConfig);
 
 ReactDOM.render(
   <Provider store={store}>
     <HelmetProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <MsalProvider instance={msalInstance}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </MsalProvider>
     </HelmetProvider>
   </Provider>,
   MOUNT_NODE,

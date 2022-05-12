@@ -8,3 +8,8 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 
 import 'jest-styled-components';
+
+import { configure } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+
+configure({ adapter: new Adapter() });
