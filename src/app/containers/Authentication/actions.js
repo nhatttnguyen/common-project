@@ -1,4 +1,3 @@
-import AuthInfo from 'models/AuthInfo';
 /*
  *
  * Authentication actions
@@ -16,8 +15,7 @@ import {
  * request to set user is authenticated.
  * @param {AuthInfo} authInfo
  */
-export const setAuthenticatedRequest = (authInfo: AuthInfo) => {
-  console.log('setAuthenticatedRequest', authInfo);
+export const setAuthenticatedRequest = authInfo => {
   return {
     type: AUTHENTICATED_REQUEST,
     authInfo,

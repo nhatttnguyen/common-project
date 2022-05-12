@@ -8,11 +8,4 @@ describe('reducer', () => {
     const state = reducer({}, '');
     expect(state.test).toBe('dummyResult');
   });
-
-  it('should return identity reducers when empty', () => {
-    const reducer = createReducer();
-    const state = { a: 1 };
-    const newState = reducer(state, '');
-    expect(newState).toBe(state);
-  });
 });
