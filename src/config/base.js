@@ -73,33 +73,4 @@ export default {
       ],
     },
   },
-  MAX_CONCURRENT_UPLOAD: 3,
-  MAX_RANGE_TIME_RETRY: 60,
-  ToastNotificationDefaultConfig: {
-    showCloseAllBtn: false,
-    position: 'CustomTopLeftPosition',
-  },
-  AUTO_SAVE_INTERVAL: 60,
-  AUTO_SAVE_DEBOUNCE_TIME: 30,
-  SUPPORT_FILE_TYPE:
-    '.MP3,.M4A,.WAV,.AAC,.AIFF,.AMR,.ASF,.AU,.CAF,.FLAC,.RA,.MP4,.AVI,.MOV,.3GP,.WMV,.FLV,.MKV,.WEBM,.MPG,.OGG',
-  CHECKING_TRANSCRIPTION_STATUS_INTERVAL: 120, // in second
-  CHECKING_AUDIO_LENGTH_INTERVAL: 10, // in second
-  SignalRDomain: 'https://uluru-transcription-dev-api.azurewebsites.net',
-  remainingDaysToNotify: 10,
-  remainingTimeThresholdInMinutes: 999,
-  contactLink: 'https://qsrinternational.com/nvivo/contact-us/contact-support',
-  privacyLink:
-    'https://qsrinternational.com/legal/privacy-policy?utm_source=NVivoTranscription&utm_medium=myNVivoPlatform&utm_campaign=myNVivoPlatform&utm_term=myNVivo&utm_content=myNVivo',
-  termsLink: 'https://www.qsrinternational.com/terms-and-conditions',
-  legalLink:
-    'https://qsrinternational.com/legal?utm_source=NVivoTranscription&utm_medium=myNVivoPlatform&utm_campaign=myNVivoPlatform&utm_term=myNVivo&utm_content=myNVivo',
-  nvivoLink:
-    'https://qsrinternational.com/nvivo/home?utm_source=NVivoTranscription&utm_medium=myNVivoPlatform&utm_campaign=myNVivoPlatform&utm_term=myNVivo&utm_content=myNVivo',
-  customDictionaryHelpLink:
-    'https://redirect2.qsrinternational.com/help-transcription-dictionary-learnmore.htm',
-  transcriptionHelpLink:
-    'https://redirect2.qsrinternational.com/help-transcription-supportmenu-home.htm',
-  whatsNewLink:
-    'https://redirect2.qsrinternational.com/help-transcription-supportmenu-whatsnew.htm',
 };

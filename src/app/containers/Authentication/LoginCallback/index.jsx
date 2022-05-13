@@ -1,6 +1,7 @@
 // @flow
 import React, { memo, useEffect } from 'react';
 import { useMsal } from '@azure/msal-react';
+
 import { InteractionRequiredAuthError } from '@azure/msal-browser';
 import moment from 'moment';
 import get from 'lodash/fp/get';
@@ -23,23 +24,18 @@ import { SpinnerWrapper } from './styles';
 import { actions, sliceKey } from '../slice';
 
 export const LoginCallback = () => {
+  const { instance, accounts, inProgress } = useMsal();
+
   useInjectSaga({ key: sliceKey, saga });
   const history = useHistory();
   const location = useLocation();
   const isAuthenticated = useSelector(selectAuthenticated);
-
   const { setAuthenticatedRequest } = useActions(
     {
       setAuthenticatedRequest: actions.setAuthenticatedRequest,
     },
     [actions],
   );
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      history.push('/');
-    }
-  }, [history, isAuthenticated]);
 
   useEffect(() => {
     const error = getHashStringParameter('error', location);
@@ -49,47 +45,58 @@ export const LoginCallback = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { instance, accounts, inProgress } = useMsal();
-
-  if (
-    !isAuthenticated &&
-    get('length', accounts) > 0 &&
-    inProgress === 'none'
-  ) {
-    const account = accounts[0] || {};
-
-    instance
-      .acquireTokenSilent({
-        scopes: config.AzureAdB2C.loginRequest.scopes,
-        account,
-      })
-      .then(response => {
-        authInfoUtils.storeMSAzureAdAccount(account);
-        const accessToken = get('accessToken', response);
-        const now = moment();
-        const expiredOnMoment = moment(response.expiresOn);
-        const expiresIn = expiredOnMoment.diff(now, 'seconds');
-        if (accessToken) {
-          const authInfo = new AuthInfo({
-            accessToken,
-            expiresIn,
-            issuedDate: moment(),
-          });
-          setAuthenticatedRequest(authInfo);
-        }
-      })
-      .catch(error => {
-        // in case if silent token acquisition fails, fallback to an interactive method
-        if (error instanceof InteractionRequiredAuthError) {
-          if (account && inProgress === 'none') {
-            instance.acquireTokenRedirect({
-              scopes: config.AzureAdB2C.loginRequest.scopes,
-              loginHint: account.username,
+  useEffect(() => {
+    if (
+      !isAuthenticated &&
+      get('length', accounts) > 0 &&
+      inProgress === 'none'
+    ) {
+      const account = accounts[0] || {};
+      instance
+        .acquireTokenSilent({
+          scopes: config.AzureAdB2C.loginRequest.scopes,
+          account,
+        })
+        .then(response => {
+          authInfoUtils.storeMSAzureAdAccount(account);
+          const accessToken = get('accessToken', response);
+          const now = moment();
+          const expiredOnMoment = moment(response.expiresOn);
+          const expiresIn = expiredOnMoment.diff(now, 'seconds');
+          if (accessToken) {
+            const authInfo = new AuthInfo({
+              accessToken,
+              expiresIn,
+              issuedDate: moment(),
             });
+            setAuthenticatedRequest(authInfo);
           }
-        }
-      });
-  }
+        })
+        .catch(error => {
+          // in case if silent token acquisition fails, fallback to an interactive method
+          if (error instanceof InteractionRequiredAuthError) {
+            if (account && inProgress === 'none') {
+              instance.acquireTokenRedirect({
+                scopes: config.AzureAdB2C.loginRequest.scopes,
+                loginHint: account.username,
+              });
+            }
+          }
+        });
+    }
+  }, [
+    accounts,
+    inProgress,
+    instance,
+    isAuthenticated,
+    setAuthenticatedRequest,
+  ]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      history.push('/');
+    }
+  }, [history, isAuthenticated]);
 
   return (
     <SpinnerWrapper>

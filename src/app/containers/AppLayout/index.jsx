@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import PublicRoute from './PublicRoute';
 
+import PublicRoute from './PublicRoute';
 import PrivateLayout from './PrivateLayout';
 import { publicRoutes } from './routes';
 import CommonLayout from './CommonLayout';

@@ -6,9 +6,8 @@ import useActions from 'hooks/useActions';
 
 import authInfoUtils from 'utils/authInfoUtils';
 import config from 'config/appConfig';
-import { selectAuthenticated } from 'app/containers/Authentication/selectors';
 
-let isRedirected = false;
+import { selectAuthenticated } from 'app/containers/Authentication/selectors';
 
 export const useAuthentication = () => {
   const { instance } = useMsal();
@@ -24,8 +23,7 @@ export const useAuthentication = () => {
   const accessToken = authInfoUtils.getAccessToken();
   if (accessToken) {
     setAuthenticated();
-  } else if (!isAuthenticated && !isRedirected) {
-    isRedirected = true;
+  } else if (!isAuthenticated) {
     instance.loginRedirect(config.AzureAdB2C.loginRequest);
   }
 };
