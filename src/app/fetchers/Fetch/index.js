@@ -113,20 +113,7 @@ const getClient = (baseUrl = apiBaseUrl, customConfig = {}) => {
       return { status, data };
     },
     async error => {
-      const { status, data: rawData } = error.response;
-
-      let data;
-      if (status === 401) {
-        // todo Logout the user
-      }
-
-      if (isEmpty(rawData)) {
-        data = {};
-      } else {
-        data = rawData;
-      }
-
-      return Promise.reject({ status, data, message: error.message });
+      return Promise.reject(error);
     },
   );
 

@@ -174,7 +174,7 @@ class AuthInfoUtils {
     }
   }
 
-  getCurrentAccountID() {
+  getCurrentAccountId() {
     return Number(cookieUtils.get(CURRENT_ACCOUNT_KEY));
   }
   /**

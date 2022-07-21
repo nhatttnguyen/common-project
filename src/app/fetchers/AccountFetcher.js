@@ -1,7 +1,6 @@
 // @flow
 import config from 'config/appConfig';
 import FetchClient from './Fetch';
-import authInfoUtils from 'utils/authInfoUtils';
 class AccountFetcher {
   ROOT_URL = config.webCoreApiUrl;
 
@@ -22,6 +21,17 @@ class AccountFetcher {
     try {
       const { data } = await FetchClient.get(url);
       return { response: data.accounts };
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  fetchListKeys = async userId => {
+    const url = `${this.ROOT_URL}/accounts/myprofile`;
+
+    try {
+      const { data } = await FetchClient.get(url);
+      return { response: data };
     } catch (error) {
       throw error;
     }

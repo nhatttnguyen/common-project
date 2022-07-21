@@ -34,3 +34,4 @@ export const HOSTING_REGION_IS_NULL =
 export const TOKEN_EXPIRE_ERROR = 'token_expire';
 
 export const ACCESS_DENIED = 'access_denied';
+export const DEFAULT_PRODUCT_ID = 1;
