@@ -36,28 +36,40 @@ export function HomePage() {
       key: 'id',
     },
     {
-      title: 'Title',
-      dataIndex: 'title',
-      key: 'title',
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      title: 'BibTeXKey',
-      dataIndex: 'bibTeXKey',
-      key: 'bibTeXKey',
+      title: 'Reserved Data',
+      dataIndex: 'reservedData',
+      key: 'reservedData',
     },
     {
-      title: 'CitationKey',
-      dataIndex: 'citationKey',
-      key: 'citationKey',
+      title: 'StaticIDs',
+      dataIndex: 'staticIDs',
+      key: 'staticIDs',
+    },
+    {
+      title: 'Internal Status',
+      dataIndex: 'internalStatus',
+      key: 'internalStatus',
+    },
+    {
+      title: 'Project Key',
+      dataIndex: 'projectKey',
+      key: 'projectKey',
     },
   ];
   const data = listKeys?.map(key => {
     return {
       key: key.id,
       id: key.id,
-      title: key.title,
-      bibTeXKey: key.bibTeXKey,
-      citationKey: key.citationKey,
+      name: key.name,
+      reservedData: key.reservedData,
+      staticIDs: key.staticIDs,
+      internalStatus: key.internalStatus,
+      projectKey: key.projectKey,
     };
   });
 

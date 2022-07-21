@@ -17,16 +17,20 @@ export function* fetchListKeysHandler() {
     // const { response } = yield call([AccountFetcher, 'fetchListKeys']);
     const response = [
       {
-        id: 1,
-        title: 'Test 1',
-        bibTeXKey: 'bibTeXKey 1',
-        citationKey: 'citationKey 1',
+        id: null,
+        name: 'New category 1',
+        reservedData: null,
+        staticIDs: null,
+        internalStatus: 0,
+        projectKey: null,
       },
       {
-        id: 2,
-        title: 'Test 2',
-        bibTeXKey: 'bibTeXKey 2',
-        citationKey: 'citationKey 2',
+        id: null,
+        name: 'New category 2',
+        reservedData: null,
+        staticIDs: null,
+        internalStatus: 0,
+        projectKey: null,
       },
     ];
     yield put(actions.fetchListKeysSuccess(response));
