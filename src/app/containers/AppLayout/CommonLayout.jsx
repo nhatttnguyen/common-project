@@ -1,15 +1,10 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { StyledLayout, StyledContent } from './styles';
-import Header from './Header';
-import Footer from './Footer';
-export const CommonLayout = ({ children }) => (
-  <StyledLayout>
-    <Header />
-    <StyledContent>{children}</StyledContent>
-    <Footer />
-  </StyledLayout>
-);
+import { StyledContent } from './styles';
+
+export const CommonLayout = ({ children }) => {
+  return <StyledContent>{children}</StyledContent>;
+};
 
 CommonLayout.propTypes = {
   component: PropTypes.any,

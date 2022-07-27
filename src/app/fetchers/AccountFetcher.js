@@ -5,7 +5,7 @@ class AccountFetcher {
   ROOT_URL = config.webCoreApiUrl;
 
   fetchCurrentUserInfo = async () => {
-    const url = `${this.ROOT_URL}/accounts/myprofile`;
+    const url = `${this.ROOT_URL}/data`;
 
     try {
       const { data } = await FetchClient.get(url);
@@ -26,8 +26,8 @@ class AccountFetcher {
     }
   };
 
-  fetchListKeys = async userId => {
-    const url = `${this.ROOT_URL}/accounts/myprofile`;
+  fetchCitaviCategoryData = async userId => {
+    const url = `${this.ROOT_URL}/data`;
 
     try {
       const { data } = await FetchClient.get(url);

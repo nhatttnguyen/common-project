@@ -3,7 +3,7 @@ import baseConfig from './base';
 const config = {
   appEnv: 'local', // feel free to remove the appEnv property here
   webApiUrl: 'https://uluru-pr-api.azure-api.net/transcription/v3',
-  webCoreApiUrl: 'https://uluru-pr-api.azure-api.net/accounts/v3',
+  webCoreApiUrl: 'https://localhost:44363',
   Auth: {
     clientId: 'aCpBT5FhSkEihg2RA7Qolu30zQmhZ8JO',
     options: {},

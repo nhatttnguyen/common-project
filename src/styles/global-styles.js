@@ -26,4 +26,14 @@ export const GlobalStyle = createGlobalStyle`
     font-family: inherit;
     font-size: inherit;
   }
+  .ant-table-thead {
+    .ant-table-cell {
+      background: #4683DE;
+      color: white;
+      font-weight: 700;
+    }
+  }
+  .ant-table-tbody>tr>td {
+     padding: 10px;
+  }
 `;

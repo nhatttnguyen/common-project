@@ -1,3 +1,10 @@
 {
-  "title": "welcome"
+  "title": "welcome",
+  "Menu": {
+    "Dashboard": "Dashboard",
+    "Academy": "NVivo Academy",
+    "Collaboration": "Collaboration",
+    "Transcription": "Transcription",
+    "Downloads": "Downloads"
+  }
 }
